@@ -14,7 +14,8 @@ RSpec.describe Carrier do
       color: 'blue',
       home_location_id: washington.id,
       current_location: lancaster,
-      category_id: category.id
+      category_id: category.id,
+      status: 'available'
     )).to be_valid
   end
 
@@ -51,6 +52,14 @@ RSpec.describe Carrier do
 
   it 'is not valid without a current_location_id' do
     expect(described_class.new(current_location_id: nil)).to_not be_valid
+  end
+
+  it 'is not valid without a status' do
+    expect(described_class.new(status: nil)).to_not be_valid
+  end
+
+  it 'is not valid with an unknown status' do
+    expect { described_class.new(status: 'lost') }.to raise_error(ArgumentError).with_message("'lost' is not a valid status")
   end
 
   describe '#build_loan' do
