@@ -62,6 +62,14 @@ RSpec.describe Carrier do
     expect { described_class.new(status: 'lost') }.to raise_error(ArgumentError).with_message("'lost' is not a valid status")
   end
 
+  describe '#available_for_checkout?' do
+    let(:carrier) { carriers(:carrier) }
+
+    it 'is an alias for available?' do
+      expect(carrier.available_for_checkout?).to eq carrier.available?
+    end
+  end
+
   describe '#build_loan' do
     let(:carrier) { described_class.first }
 

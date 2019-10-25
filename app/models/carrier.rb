@@ -27,10 +27,6 @@ class Carrier < ApplicationRecord
 
   alias_method :available_for_checkout?, :available?
 
-  def self.options_for_status_select
-    self.statuses.map { |status, _| [status.titleize, status] }
-  end
-
   def build_loan(attributes = {})
     loans.create({
       due_date: Date.today + default_loan_length_days.days,

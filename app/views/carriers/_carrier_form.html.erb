@@ -51,7 +51,7 @@
 
   <div class="form-group">
     <%= form.label :status %>
-    <%= form.select :status, Carrier.options_for_status_select, {}, { class: "form-control" } %>
+    <%= form.select :status, Carrier.statuses.keys.map { |key| [key.titleize, key] }, {}, { class: "form-control" } %>
   </div>
 
   <div class="form-group">
