@@ -22,7 +22,7 @@ class Carrier < ApplicationRecord
     available: 0,
     unavailable: 1,
     disabled: 2,
-    sold: 4
+    sold: 3
   }
 
   alias_method :available_for_checkout?, :available?
